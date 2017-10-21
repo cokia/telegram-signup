@@ -1,11 +1,11 @@
 {
   "name": "telegram-signup",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sign up for Telegram with any device",
   "main": "./lib/index.js",
   "scripts": {
     "start": "node ./bin/telegram-signup",
-    "test": "eslint --max-warnings 0 . ./bin/telegram-signup",
+    "test": "eslint --max-warnings 0 lib ./bin/telegram-signup",
     "precommit": "npm test"
   },
   "author": "Bannerets <save14@protonmail.com>",
