@@ -4,7 +4,9 @@ const TelegramSignUp = require('../lib');
 const minimist = require('minimist');
 const readline = require('readline');
 
-const argv = minimist(process.argv.slice(2), { boolean: [ 'd', 'dev' ] });
+const argv = minimist(process.argv.slice(2), {
+  boolean: ['h', 'help', 'd', 'dev']
+});
 
 if (argv.h || argv.help) {
   console.log([
@@ -30,12 +32,14 @@ const rl = readline.createInterface({
   output: process.stdout
 });
 
+const input = text => new Promise(resolve => rl.question(text, resolve));
+
 start()
   .then(
     () => {
       process.exit();
     },
-    (err) => {
+    err => {
       console.error(err.toString());
       process.exit(1);
     }
@@ -43,23 +47,26 @@ start()
 
 async function start () {
   let phoneNumber;
+
   while (!phoneNumber) {
-    phoneNumber = await question('Phone number: ');
+    phoneNumber = await input('Phone number: ');
   }
 
   let firstName;
+
   while (!firstName) {
-    firstName = await question('First name: ');
+    firstName = await input('First name: ');
   }
 
-  const lastName = await question('Last name (optional): ');
+  const lastName = await input('Last name (optional): ');
 
   const phoneCodeHash = await telegram.sendCode(phoneNumber);
   console.log('    Phone Code Hash: ' + phoneCodeHash);
 
   let res;
+
   while (!res) {
-    const code = await question('Code: ');
+    const code = await input('Code: ');
 
     if (!code) continue;
 
@@ -72,10 +79,4 @@ async function start () {
 
   console.log(res.user);
   console.log(telegram.getStorage());
-}
-
-function question (query) {
-  return new Promise((resolve) => {
-    rl.question(query, resolve);
-  });
 }
