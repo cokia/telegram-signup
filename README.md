@@ -1,19 +1,21 @@
 # telegram-signup
 
 [![npm](https://img.shields.io/npm/v/telegram-signup.svg?style=flat-square)](https://www.npmjs.com/package/telegram-signup)
-[![license](https://img.shields.io/github/license/Bannerets/telegram-signup.svg?style=flat-square)](https://github.com/Bannerets/telegram-signup)
+[![license](https://img.shields.io/github/license/Bannerets/telegram-signup.svg?style=flat-square)](https://github.com/Bannerets/telegram-signup/blob/master/LICENSE)
 
 Sign up for [Telegram](https://telegram.org/) with any device.
 
 ## Requirements
 
-- [`node`](https://nodejs.org/en/download/current/) v7.6.0+
+- [`node`](https://nodejs.org/en/download/) v7.6.0+
 
 ## Installation
 
 Via `npm`:
 
-    npm install -g telegram-signup
+```console
+$ [sudo] npm install -g telegram-signup
+```
 
 You can download Windows binaries from [GitHub Releases](https://github.com/Bannerets/telegram-signup/releases).
 
@@ -21,7 +23,9 @@ You can download Windows binaries from [GitHub Releases](https://github.com/Bann
 
 Start from command line:
 
-    telegram-signup [options]
+```console
+$ telegram-signup [options]
+```
 
 It will request phone number, first name, and last name (optional).
 
